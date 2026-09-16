@@ -79,6 +79,18 @@ section h2 small{font-family:"Noto Sans SC","PingFang SC",sans-serif;font-weight
 .chip label:hover{border-color:var(--ink-3)}
 .chip input:checked+label{border-color:var(--lamp);background:var(--lamp-soft);color:var(--lamp-ink);font-weight:500}
 .chip input:focus-visible+label{outline:2px solid var(--focus);outline-offset:2px}
+.tier-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-left:2.2em}
+.tier{position:relative}
+.tier input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.tier label{display:block;height:100%;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--panel);cursor:pointer;transition:border-color .12s,background .12s,box-shadow .12s,transform .12s}
+.tier label:hover{border-color:var(--ink-3);transform:translateY(-1px)}
+.tier input:checked+label{border-color:var(--lamp);background:var(--lamp-soft);box-shadow:0 0 0 1px var(--lamp)}
+.tier input:focus-visible+label{outline:2px solid var(--focus);outline-offset:2px}
+.tier-top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.tier-code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;color:var(--lamp-ink)}
+.tier-name{font-size:15px;font-weight:600;color:var(--ink)}
+.tier-badge{margin-left:auto;padding:2px 8px;border-radius:999px;background:var(--lamp);color:#1e2333;font-size:11px;font-weight:700}
+.tier-desc{margin:0;color:var(--ink-2);font-size:13px;line-height:1.65}
 .chip.other{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .chip.other input[type=text]{width:240px;display:none;padding:6px 10px;font-size:13.5px}
 .chip.other input:checked~input[type=text]{display:block}
@@ -129,7 +141,7 @@ textarea{min-height:64px;resize:vertical}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(8px);background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;z-index:20;max-width:90vw}
 .toast.show{opacity:1;transform:translateX(-50%)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-@media (max-width:600px){.row.two{grid-template-columns:1fr}.bar-in{padding:10px 16px}.wrap{padding:24px 16px 80px}.intro h2{font-size:24px}.chip.other input[type=text]{width:100%}.drop{flex-direction:column;align-items:stretch}}
+@media (max-width:600px){.row.two{grid-template-columns:1fr}.tier-grid{grid-template-columns:1fr;margin-left:0}.bar-in{padding:10px 16px}.wrap{padding:24px 16px 80px}.intro h2{font-size:24px}.chip.other input[type=text]{width:100%}.drop{flex-direction:column;align-items:stretch}}
 @media (max-width:600px){input[type=text],textarea{font-size:16px}.bar .prog{order:3;width:100%;justify-content:center}}
 html[lang="en"] .card-b{word-break:normal;overflow-wrap:anywhere}
 #langToggle{text-decoration:none;color:var(--ink)}
@@ -229,7 +241,12 @@ html[lang="en"] .card-b{word-break:normal;overflow-wrap:anywhere}
       <div class="chips" id="duration"></div>
     </div>
     <div class="q">
-      <div class="q-h"><span class="q-n">6</span><span class="q-t">画风</span></div>
+      <div class="q-h"><span class="q-n">6</span><span class="q-t">视频制作档位</span><span class="q-k rec">请选择</span></div>
+      <div class="q-sub">档位决定镜头复杂度、特效丰富度和包含的免费调整次数。</div>
+      <div class="tier-grid" id="tiers"></div>
+    </div>
+    <div class="q">
+      <div class="q-h"><span class="q-n">7</span><span class="q-t">画风</span></div>
       <div class="chips" id="style"></div>
       <div class="sub" id="styleSub" hidden>
         <div class="q-h"><span class="q-t">这个画风里，两个人怎么出现</span></div>
@@ -246,15 +263,15 @@ html[lang="en"] .card-b{word-break:normal;overflow-wrap:anywhere}
     <h2>想加的，不想要的<small>选填，建议填</small></h2>
     <p class="why">这里的东西会直接变成画面里的道具、地点和旁白里的一句话，是片子最像"你们"的部分。</p>
     <div class="q">
-      <div class="q-h"><span class="q-n">19</span><span class="q-t">想放进去的东西</span><span class="q-k rec">建议填</span></div>
+      <div class="q-h"><span class="q-n">20</span><span class="q-t">想放进去的东西</span><span class="q-k rec">建议填</span></div>
       <div class="checks" id="adds"></div>
     </div>
     <div class="q">
-      <div class="q-h"><span class="q-n">20</span><span class="q-t">不想出现的东西</span><span class="q-k rec">建议填</span></div>
+      <div class="q-h"><span class="q-n">21</span><span class="q-t">不想出现的东西</span><span class="q-k rec">建议填</span></div>
       <div class="row"><textarea id="avoid" placeholder="例：不出现前任、不出现酒"></textarea></div>
     </div>
     <div class="q">
-      <div class="q-h"><span class="q-n">21</span><span class="q-t">五幕里有没有想换掉的一幕，换成什么</span><span class="q-k">选填</span></div>
+      <div class="q-h"><span class="q-n">22</span><span class="q-t">五幕里有没有想换掉的一幕，换成什么</span><span class="q-k">选填</span></div>
       <div class="row"><input type="text" id="swap" placeholder="例：第四幕换成和爸妈一起过年" ></div>
     </div>
   </section>
@@ -262,7 +279,7 @@ html[lang="en"] .card-b{word-break:normal;overflow-wrap:anywhere}
     <div class="eyebrow"><span>音乐</span></div>
     <h2>配乐<small>选填，只收不带歌词的纯音乐</small></h2>
     <div class="q">
-      <div class="q-h"><span class="q-n">22</span><span class="q-t">有没有想用的纯音乐</span></div>
+      <div class="q-h"><span class="q-n">23</span><span class="q-t">有没有想用的纯音乐</span></div>
       <div class="chips" id="music"></div>
       <div class="hint">带歌词的歌和旁白会打架，所以只收纯音乐。没有合适的，制作方用音乐模型按片子情绪定制一首。</div>
     </div>
@@ -271,7 +288,7 @@ html[lang="en"] .card-b{word-break:normal;overflow-wrap:anywhere}
     <div class="eyebrow"><span>备注</span></div>
     <h2>还有什么想法<small>必答，任何想法都写这里</small></h2>
     <div class="q">
-      <div class="q-h"><span class="q-n">23</span><span class="q-t">注意点、参考、想法</span></div>
+      <div class="q-h"><span class="q-n">24</span><span class="q-t">注意点、参考、想法</span></div>
       <div class="q-sub">想要的画面质感、参考的电影或照片、特别在意的地方、怕出错的地方，都写。写得越具体，片子越像你们想的那样。</div>
       <div class="row"><textarea id="notes" placeholder="例：画面想要日系电影那种朦胧、精致的质感；旁白别太煽情；他不喜欢正面特写"></textarea></div>
     </div>
@@ -304,26 +321,32 @@ const SPEC = {
   ratio:[['宽屏 16:9（默认，现场大屏）','宽屏 16:9'],['窄屏 9:16（手机竖屏）','窄屏 9:16']],
   occasion:['仪式前暖场','仪式中','宴会开场'],
   duration:[['90 秒（默认）','90 秒'],['180 秒','180 秒']],
+  tiers:[
+    {code:'A',name:'精品史诗微电影',desc:'电影级光影，多场景切换、慢动作 + 粒子特效、复杂运镜；免费 4 次片段调整',featured:true},
+    {code:'B',name:'精品级微电影',desc:'人像稳定，连贯长镜头，常规电影氛围感；免费 3 次镜头调整'},
+    {code:'C',name:'标准版',desc:'常规运镜，少量特效；免费 3 次镜头调整'},
+    {code:'D',name:'轻成片',desc:'简约镜头，基础场景；免费 2 次镜头调整'}
+  ],
   style:[['写实电影感','写实电影感'],['水彩绘本','水彩绘本'],['纸艺折纸','纸艺折纸'],['黏土定格','黏土定格'],['可爱 3D 动画','可爱 3D 动画']],
   styleMode:[['真人出镜，环境和画风是动画','真人出镜+动画环境'],['纯动画，两人也画成动画形象','纯动画'],['写实真人，不是动画','写实真人']],
   acts:[
-    {id:'a1',n:'第一幕',name:'相识',ask:'你们是怎么认识的',qPick:7,
+    {id:'a1',n:'第一幕',name:'相识',ask:'你们是怎么认识的',qPick:8,
      opts:['校园同学','同事','朋友介绍','网络认识','旅行或活动偶遇','青梅竹马'],
-     fill:{q:8,ask:'第一次见面在哪、什么季节、谁先注意到谁？',ph:'例：大二图书馆门口的林荫道，秋天，他先注意到她'},
-     extra:{q:9,ask:'那天有没有一个你到现在还记得的小东西（一本书、一杯饮料、一句话）？',ph:'例：她抱着两本书'}},
-    {id:'a2',n:'第二幕',name:'相知',ask:'是怎么慢慢走近的',qPick:10,
+     fill:{q:9,ask:'第一次见面在哪、什么季节、谁先注意到谁？',ph:'例：大二图书馆门口的林荫道，秋天，他先注意到她'},
+     extra:{q:10,ask:'那天有没有一个你到现在还记得的小东西（一本书、一杯饮料、一句话）？',ph:'例：她抱着两本书'}},
+    {id:'a2',n:'第二幕',name:'相知',ask:'是怎么慢慢走近的',qPick:11,
      opts:['雨天共伞','一起自习或加班','一起吃饭','深夜打电话','一起旅行','生病照顾','一起做饭'],
-     fill:{q:11,ask:'对方做过的一件让你心动的小事。',ph:'例：下雨天他的伞永远偏向她，自己右肩总是湿的'}},
-    {id:'a3',n:'第三幕',name:'确认',ask:'怎么在一起的，表白或求婚',qPick:12,
+     fill:{q:12,ask:'对方做过的一件让你心动的小事。',ph:'例：下雨天他的伞永远偏向她，自己右肩总是湿的'}},
+    {id:'a3',n:'第三幕',name:'确认',ask:'怎么在一起的，表白或求婚',qPick:13,
      opts:['毕业时决定一起走','表白','求婚','异地重逢','决定同行（搬家、换城市）'],
-     fill:{q:13,ask:'在哪、谁开的口、说了什么？',ph:'例：毕业那天教学楼前，他说以后的路一起走'}},
-    {id:'a4',n:'第四幕',name:'相伴',ask:'一起生活的日子',qPick:14,
+     fill:{q:14,ask:'在哪、谁开的口、说了什么？',ph:'例：毕业那天教学楼前，他说以后的路一起走'}},
+    {id:'a4',n:'第四幕',name:'相伴',ask:'一起生活的日子',qPick:15,
      opts:['家中翻相册','布置第一个家','养宠物','一起做饭','异地坚持','共同事业','一起熬过一件难事'],
-     fill:{q:15,ask:'日常里最"你们"的一个画面。',ph:'例：周末傍晚窝在沙发翻老照片，笑到茶都凉了'}},
-    {id:'a5',n:'第五幕',name:'承诺',ask:'婚礼当天，片子怎么收尾',qPick:17,
-     venue:{q:16,opts:['户外草坪或花园','室内宴会厅','中式庭院','教堂','海边','旅行婚礼']},
+     fill:{q:16,ask:'日常里最"你们"的一个画面。',ph:'例：周末傍晚窝在沙发翻老照片，笑到茶都凉了'}},
+    {id:'a5',n:'第五幕',name:'承诺',ask:'婚礼当天，片子怎么收尾',qPick:18,
+     venue:{q:17,opts:['户外草坪或花园','室内宴会厅','中式庭院','教堂','海边','旅行婚礼']},
      opts:['牵手走远','回眸相笑','拥抱','交换戒指（只拍手，最稳）'],
-     fill:{q:18,ask:'想对对方说的一句话，会做结尾旁白。',ph:'例：这次，我就在你身边'}}
+     fill:{q:19,ask:'想对对方说的一句话，会做结尾旁白。',ph:'例：这次，我就在你身边'}}
   ],
   adds:[['pet','宠物，名字','例：柯基「豆豆」'],['place','一个有意义的地方','例：学校后门的奶茶店'],['thing','一件有意义的物品','例：第一次约会的电影票'],['song','一首歌','例：他们大学时常听的那首'],['phrase','一句你们常说的话','例：走啦，回家']]
 };
@@ -392,6 +415,19 @@ const EN = {
   "90 秒（默认）": "90 seconds (default)",
   "90 秒": "90 seconds",
   "180 秒": "180 seconds",
+  "视频制作档位": "Production tier",
+  "请选择": "Choose one",
+  "档位决定镜头复杂度、特效丰富度和包含的免费调整次数。": "Your tier sets the shot complexity, visual effects and number of included adjustments.",
+  "制作档位": "Production tier",
+  "主推": "Recommended",
+  "精品史诗微电影": "Signature epic film",
+  "电影级光影，多场景切换、慢动作 + 粒子特效、复杂运镜；免费 4 次片段调整": "Cinematic lighting, multiple settings, slow motion, particle effects and complex camera movement; 4 clip adjustments included",
+  "精品级微电影": "Premium short film",
+  "人像稳定，连贯长镜头，常规电影氛围感；免费 3 次镜头调整": "Stable likeness, continuous long takes and a classic cinematic mood; 3 shot adjustments included",
+  "标准版": "Standard",
+  "常规运镜，少量特效；免费 3 次镜头调整": "Standard camera movement with light effects; 3 shot adjustments included",
+  "轻成片": "Essential film",
+  "简约镜头，基础场景；免费 2 次镜头调整": "Simple shots and essential settings; 2 shot adjustments included",
   "写实电影感": "Cinematic realism",
   "水彩绘本": "Watercolor storybook",
   "纸艺折纸": "Paper craft / origami",
@@ -547,6 +583,7 @@ function chips(host, name, opts, otherPh){
 chips('#ratio','ratio',SPEC.ratio,'例：1:1 方形');
 chips('#occasion','occasion',SPEC.occasion,'例：敬酒环节');
 chips('#duration','duration',SPEC.duration,'例：120 秒');
+$('#tiers').innerHTML = SPEC.tiers.map(t=>`<span class="tier"><input type="radio" name="tier" id="tier_${t.code}" value="${t.code}"><label for="tier_${t.code}"><span class="tier-top"><span class="tier-code">${t.code}</span><span class="tier-name">${esc(tr(t.name))}</span>${t.featured?`<span class="tier-badge">${tr('主推')}</span>`:''}</span><p class="tier-desc">${esc(tr(t.desc))}</p></label></span>`).join('');
 chips('#style','style',SPEC.style,'例：岩井俊二《花与爱丽丝》那种质感');
 chips('#styleMode','styleMode',SPEC.styleMode,'自己写');
 $('#music').innerHTML = `<span class="chip other"><input type="radio" name="music" id="music_own" value="自带"><label for="music_own">我有想用的纯音乐</label><input type="text" id="music_own_t" placeholder="曲名 / 作者 / 链接，不带歌词" aria-label="曲名"></span><span class="chip"><input type="radio" name="music" id="music_us" value="制作方定制"><label for="music_us">交给制作方定制</label></span>`;
@@ -583,6 +620,7 @@ $('#actChips').innerHTML = SPEC.acts.map(a=>`<span class="act" id="ac_${a.id}">$
 const v = id => { const el = document.getElementById(id); return el ? (el.type==='checkbox' ? el.checked : el.value.trim()) : ''; };
 const radio = name => { const r = document.querySelector(`input[name="${name}"]:checked`); return r ? r.value : ''; };
 function pick(name){ const r = radio(name); if(r==='其他'){ const t = v(name+'_other'); return t ? tr('其他')+': '+t : ''; } return tr(r); }
+function tierPick(){ const code=radio('tier'); if(!code)return ''; const t=SPEC.tiers.find(x=>x.code===code); return t ? code+' · '+tr(t.name)+' ｜ '+tr(t.desc) : ''; }
 const needMode = () => { const r = radio('style'); return !!r && r!=='写实电影感'; };
 
 function build(){
@@ -590,7 +628,7 @@ function build(){
   const U='<span class="u">'+tr('未填')+'</span>', need=[],html=[],text=[];
   const L=(h,t)=>{html.push(h);text.push(t);};
   const cell=(val,label)=>{if(val)return [esc(val),val];need.push(tr(label));return [U,tr('未填')];};
-  const rows=[['称呼',v('groom')&&v('bride')?v('groom')+' / '+v('bride'):''],['尺寸',pick('ratio')],['场合',pick('occasion')],['时长',pick('duration')]];
+  const rows=[['称呼',v('groom')&&v('bride')?v('groom')+' / '+v('bride'):''],['尺寸',pick('ratio')],['场合',pick('occasion')],['时长',pick('duration')],['制作档位',tierPick()]];
   let sty=pick('style');
   if(sty&&needMode()){const mode=pick('styleMode');if(!mode)need.push(tr('画风里两人怎么出现'));sty+=' · '+(mode||tr('未填'));}
   rows.push(['画风',sty]);
@@ -616,7 +654,7 @@ function build(){
   L('<span class="m">'+tr('旁白：第三人称讲述（固定）')+'</span>',tr('旁白：第三人称讲述（固定）'));
   L(tr('未填')+'：'+(need.length?'<span class="u">'+esc(need.join(comma))+'</span>':tr('无，可以复制')),tr('未填')+'：'+(need.length?need.join(comma):tr('无，可以复制')));
   $('#cardBody').innerHTML=html.join('\n');build.text=text.join('\n');build.need=need;
-  const total=17+(needMode()?1:0),n=Math.max(0,total-need.length);
+  const total=18+(needMode()?1:0),n=Math.max(0,total-need.length);
   $('#fill').style.width=(n/total*100)+'%';$('#progt').textContent=tr('必答')+' '+n+' / '+total+(need.length===0?' · '+tr('可以复制'):'');
   $('#prog').classList.toggle('done',need.length===0);
 }
