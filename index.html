@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>婚礼故事采集卡</title>
-<meta name="description" content="用于婚礼故事视频定制的新人故事采集卡，填写后可一键复制完整内容。">
+<title>无双影像 · 婚礼微电影创作卡</title>
+<meta name="description" content="支持真实故事、古风科幻主题演绎与混合改编的婚礼微电影创作需求卡。">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23C4892C'/%3E%3Cpath d='M32 49 14 31c-10-11 6-24 18-10 12-14 28-1 18 10Z' fill='white'/%3E%3C/svg%3E">
 
 <style>
@@ -97,8 +97,8 @@ section h2 small{font-family:"Noto Sans SC","PingFang SC",sans-serif;font-weight
 .sub{margin:12px 0 0 2.2em;padding:12px 14px;border:1px dashed var(--line);border-radius:8px}
 .sub .q-h{margin-bottom:8px}
 .sub .chips{margin-left:0}
-input[type=text],textarea{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:14px}
-input[type=text]::placeholder,textarea::placeholder{color:var(--ink-3)}
+input[type=text],input[type=date],textarea{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:14px}
+input[type=text]::placeholder,input[type=date]::placeholder,textarea::placeholder{color:var(--ink-3)}
 textarea{min-height:64px;resize:vertical}
 .row{display:grid;gap:10px;margin-left:2.2em}
 .row.two{grid-template-columns:1fr 1fr}
@@ -145,6 +145,50 @@ textarea{min-height:64px;resize:vertical}
 @media (max-width:600px){input[type=text],textarea{font-size:16px}.bar .prog{order:3;width:100%;justify-content:center}}
 html[lang="en"] .card-b{word-break:normal;overflow-wrap:anywhere}
 #langToggle{text-decoration:none;color:var(--ink)}
+.hero{max-width:1080px;margin:22px auto 0;padding:0 24px}
+.hero-shell{position:relative;min-height:430px;overflow:hidden;border-radius:28px;background:#111723 url('wedding-cinema-hero.png') center/cover no-repeat;box-shadow:0 28px 70px rgba(14,20,31,.22)}
+.hero-shell:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,13,22,.92) 0%,rgba(8,13,22,.72) 39%,rgba(8,13,22,.18) 72%,rgba(8,13,22,.08) 100%)}
+.hero-copy{position:relative;z-index:1;width:min(560px,70%);padding:64px 58px;color:#fff}
+.hero-kicker{display:flex;align-items:center;gap:12px;margin-bottom:20px;color:#e6c78e;font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+.hero-kicker:before{content:"";width:38px;height:1px;background:#cfa65f}
+.hero h2{font-size:46px;line-height:1.18;letter-spacing:.04em;margin-bottom:18px}
+.hero p{margin:0;max-width:30em;color:rgba(255,255,255,.78);font-size:16px;line-height:1.9}
+.hero-meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:30px;color:rgba(255,255,255,.9);font-size:13px}
+.hero-meta span{display:flex;align-items:center;gap:8px}
+.hero-meta i{display:grid;place-items:center;width:23px;height:23px;border:1px solid rgba(230,199,142,.48);border-radius:50%;color:#e6c78e;font-style:normal;font-size:11px}
+.stage-nav{max-width:1080px;margin:18px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.stage-nav a{display:flex;gap:10px;align-items:center;min-width:0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink-2);text-decoration:none;font-size:13px;transition:.15s ease}
+.stage-nav a:hover{border-color:var(--lamp);color:var(--ink);transform:translateY(-1px)}
+.stage-nav a.active{border-color:var(--lamp);background:var(--lamp-soft);color:var(--lamp-ink);box-shadow:0 0 0 1px var(--lamp)}
+.stage-nav b{display:grid;place-items:center;flex:0 0 24px;height:24px;border-radius:50%;background:var(--lamp-soft);color:var(--lamp-ink);font:600 11px ui-monospace,monospace}
+.stage-nav span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.intro{padding:22px 24px;border:1px solid var(--line);border-radius:16px;background:var(--panel);box-shadow:var(--shadow)}
+.intro .intro-title{font-family:"Noto Serif SC","Songti SC",serif;font-size:20px;color:var(--ink);margin:0 0 8px}
+.privacy-note{display:flex;gap:10px;align-items:flex-start;margin-top:14px!important;padding-top:14px;border-top:1px solid var(--line-2);font-size:13px!important}
+.privacy-note:before{content:"✓";display:grid;place-items:center;flex:0 0 22px;height:22px;border-radius:50%;background:var(--lamp-soft);color:var(--lamp-ink);font-weight:700}
+.step-panel[hidden]{display:none!important}
+.step-controls{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:28px;padding-top:22px;border-top:1px solid var(--line)}
+.step-controls .btn{padding:10px 18px;font-size:14px}.step-status{color:var(--ink-3);font-size:13px}
+.example{margin:10px 0 0 2.2em;border-left:2px solid var(--lamp);padding:4px 0 4px 12px;color:var(--ink-2);font-size:13px}
+.example summary{cursor:pointer;color:var(--lamp-ink);font-weight:500}.example p{margin:7px 0 0;line-height:1.75}
+.tier-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.tier-meta span{padding:2px 7px;border-radius:5px;background:var(--line-2);color:var(--ink-2);font-size:11.5px}
+.preview-box{margin-top:26px;padding:22px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,var(--panel),var(--lamp-soft));box-shadow:var(--shadow)}
+.preview-box h3{font-size:19px;margin-bottom:6px}.preview-box>p{margin:0 0 16px;color:var(--ink-2);font-size:13px}
+.preview-story{padding:16px;border-radius:10px;background:var(--panel);font-family:"Noto Serif SC","Songti SC",serif;font-size:14px;line-height:1.9;white-space:pre-wrap;max-height:360px;overflow:auto}
+.quality-list{display:grid;gap:7px;margin:14px 0 0;padding:0;list-style:none;font-size:13px}.quality-list li{display:flex;gap:8px;align-items:flex-start}.quality-list .ok{color:#28724a}.quality-list .warn{color:#9a6212}
+.deliver-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.deliver-actions .btn{padding:9px 14px}
+@media print{.bar,.hero,.stage-nav,.intro,.step-controls,.mobile-cta,aside,.deliver-actions,.access-gate{display:none!important}.wrap{display:block;max-width:none;padding:0}.step-panel{display:none!important}#s8.step-panel{display:block!important;border:0}.preview-box{box-shadow:none;border:0;padding:0}.preview-story{max-height:none;overflow:visible}}
+section{scroll-margin-top:88px}
+.mobile-cta{display:none}
+@media(max-width:760px){
+ .hero{margin-top:12px;padding:0 12px}.hero-shell{min-height:420px;border-radius:20px;background-position:62% center}.hero-shell:after{background:linear-gradient(0deg,rgba(8,13,22,.94),rgba(8,13,22,.3) 86%)}
+ .hero-copy{position:absolute;left:0;right:0;bottom:0;width:100%;padding:34px 26px}.hero h2{font-size:34px}.hero p{font-size:15px;line-height:1.7}.hero-meta{gap:12px;margin-top:22px}
+ .stage-nav{padding:0 12px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.stage-nav::-webkit-scrollbar{display:none}.stage-nav a{flex:0 0 138px;scroll-snap-align:start}
+ .intro{padding:20px}.wrap{padding-top:22px}
+ .mobile-cta{position:fixed;z-index:30;left:14px;right:14px;bottom:max(12px,env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 12px 11px 16px;border:1px solid rgba(255,255,255,.13);border-radius:16px;background:rgba(24,29,39,.94);box-shadow:0 12px 36px rgba(0,0,0,.28);backdrop-filter:blur(14px);color:#fff}
+ .mobile-cta span{font-size:13px;color:rgba(255,255,255,.72)}.mobile-cta button{border:0;border-radius:10px;padding:10px 16px;background:var(--lamp);color:#15181f;font-weight:700}
+ body{padding-bottom:82px}
+}
 .gate-locked{overflow:hidden}
 .access-gate{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:24px;background:linear-gradient(145deg,#15181f,#242936)}
 .access-gate[hidden]{display:none}
@@ -163,7 +207,7 @@ html[lang="en"] .card-b{word-break:normal;overflow-wrap:anywhere}
 <div class="access-gate" id="accessGate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
   <form class="gate-card" id="accessForm">
     <div class="gate-mark" aria-hidden="true">♥</div>
-    <h2 id="gateTitle">婚礼故事采集卡</h2>
+    <h2 id="gateTitle">无双影像 · 婚礼微电影创作卡</h2>
     <p>请输入制作方提供的访问密码</p>
     <input id="accessCode" type="password" autocomplete="off" aria-label="访问密码" placeholder="输入访问密码">
     <button class="gate-submit" type="submit">进入采集卡</button>
@@ -200,29 +244,60 @@ html[lang="en"] .card-b{word-break:normal;overflow-wrap:anywhere}
 </script>
 
 <div class="bar"><div class="bar-in">
-  <h1>婚礼故事采集卡</h1>
+  <h1>婚礼微电影创作卡</h1>
   <span class="sp"></span>
   <a class="btn" id="langToggle" href="?lang=en" aria-label="Switch language">English</a>
   <span class="prog" id="prog"><span class="track"><span class="fill" id="fill"></span></span><span id="progt">必答 0 / 18</span></span>
   <button class="btn" id="btnClear" type="button">清空</button>
 </div></div>
 
+<header class="hero" aria-labelledby="heroTitle">
+  <div class="hero-shell">
+    <div class="hero-copy">
+      <div class="hero-kicker">无双影像 · AI WEDDING FILMS</div>
+      <h2 id="heroTitle">把你们的故事，写成一部电影</h2>
+      <p>这不是一份普通问卷。你写下的地点、动作和一句话，会成为婚礼影片里的镜头、旁白与光影。</p>
+      <div class="hero-meta"><span><i>01</i>约 8–12 分钟</span><span><i>02</i>答案自动暂存</span><span><i>03</i>随时继续填写</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="stage-nav" aria-label="填写步骤">
+  <a href="#s0" data-step="1"><b>01</b><span>基本设定</span></a>
+  <a href="#a1" data-step="2"><b>02</b><span>相识相知</span></a>
+  <a href="#a3" data-step="3"><b>03</b><span>相伴承诺</span></a>
+  <a href="#s6" data-step="4"><b>04</b><span>专属偏好</span></a>
+  <a href="#s8" data-step="5"><b>05</b><span>预览提交</span></a>
+</nav>
+
 <div class="wrap">
 <main>
-  <div class="intro"><p>填好后点「复制故事卡」，通过微信等方式发回制作方。推荐电脑填写，手机也可以。下面的例子只是填写提示，请只写你们的真实经历；没有、记不清或不想呈现的，选「其他」并说明，细节栏也可如实填写。</p><p>文字草稿仅保存在当前浏览器；不收集手机号，不向后台提交。照片原图请在聊天中另发。</p></div>
+  <div class="intro"><p class="intro-title">写真实的小事，比写漂亮的话更重要</p><p>请按你们真实的经历填写。没有、记不清或不想呈现的内容，可以直接说明。填写完成后点击「复制故事卡」，通过微信发回制作方。</p><p class="privacy-note">文字草稿只保存在当前浏览器，不收集手机号，也不会自动上传。照片原图请在聊天中另发。</p></div>
   <section id="s0">
     <div class="eyebrow"><span>基本信息</span></div>
     <h2>先认识一下<small>全部必答</small></h2>
 
     <div class="q">
-      <div class="q-h"><span class="q-n">1</span><span class="q-t">视频尺寸</span></div>
+      <div class="q-h"><span class="q-n">1</span><span class="q-t">这次想创作哪类影片</span></div>
+      <div class="q-sub">选择后，后面的故事问题会自动切换。</div>
+      <div class="tier-grid" id="creationMode"></div>
+    </div>
+    <div class="q">
+      <div class="q-h"><span class="q-n">2</span><span class="q-t">视频尺寸</span></div>
       <div class="chips" id="ratio"></div>
     </div>
     <div class="q">
-      <div class="q-h"><span class="q-n">2</span><span class="q-t">两人在视频里怎么称呼</span></div>
+      <div class="q-h"><span class="q-n">3</span><span class="q-t">两人在视频里怎么称呼</span></div>
       <div class="row two">
         <div class="field"><label for="groom">新郎</label><input type="text" id="groom" placeholder="例：阿远"></div>
         <div class="field"><label for="bride">新娘</label><input type="text" id="bride" placeholder="例：小雨"></div>
+      </div>
+    </div>
+    <div class="q">
+      <div class="q-h"><span class="q-n">·</span><span class="q-t">婚礼日期与联系方式</span><span class="q-k">选填</span></div>
+      <div class="row two">
+        <div class="field"><label for="weddingDate">婚礼日期</label><input type="date" id="weddingDate"></div>
+        <div class="field"><label for="contactWay">微信号或手机号</label><input type="text" id="contactWay" placeholder="仅用于确认本次制作需求"></div>
       </div>
     </div>
     <div class="q">
@@ -258,6 +333,43 @@ html[lang="en"] .card-b{word-break:normal;overflow-wrap:anywhere}
 
   <div id="acts"></div>
 
+  <section id="conceptWorld">
+    <div class="eyebrow"><span>主题设定</span></div>
+    <h2>建立影片世界<small>古风、科幻、玄幻等题材使用</small></h2>
+    <div class="q">
+      <div class="q-h"><span class="q-n">A</span><span class="q-t">故事题材</span></div>
+      <div class="chips" id="conceptGenre"></div>
+    </div>
+    <div class="q">
+      <div class="q-h"><span class="q-n">B</span><span class="q-t">故事发生在怎样的世界</span></div>
+      <div class="row"><textarea id="worldSetting" placeholder="例：架空古代，边关战乱后的雪夜城池；或未来两百年的环形空间站"></textarea></div>
+      <details class="example"><summary>查看填写示例</summary><p>不要只写“古风”或“科幻”，可以补充时代、地点、天气和社会状态，这些信息会直接决定场景与光影。</p></details>
+    </div>
+    <div class="q">
+      <div class="q-h"><span class="q-n">C</span><span class="q-t">两人的角色身份</span></div>
+      <div class="row two"><div class="field"><label for="groomRole">新郎角色</label><input type="text" id="groomRole" placeholder="例：镇守边关的将军"></div><div class="field"><label for="brideRole">新娘角色</label><input type="text" id="brideRole" placeholder="例：游历四方的医师"></div></div>
+    </div>
+    <div class="q">
+      <div class="q-h"><span class="q-n">D</span><span class="q-t">两人在故事中的关系</span></div>
+      <div class="row"><input type="text" id="storyRelation" placeholder="例：多年未见的故人、并肩执行任务的搭档、敌对阵营的恋人"></div>
+    </div>
+    <div class="q" id="realKeepWrap">
+      <div class="q-h"><span class="q-n">E</span><span class="q-t">哪些真实经历必须保留</span></div>
+      <div class="row"><textarea id="realKeep" placeholder="例：异地三年、雨天第一次见面、求婚时说的那句话"></textarea></div>
+    </div>
+  </section>
+
+  <section id="conceptPlot">
+    <div class="eyebrow"><span>剧情设计</span></div>
+    <h2>冲突、高潮与结局<small>让主题片有完整故事</small></h2>
+    <div class="q"><div class="q-h"><span class="q-n">F</span><span class="q-t">故事中发生了什么事件</span></div><div class="row"><textarea id="mainEvent" placeholder="例：空间站即将毁灭，两人必须完成最后一次跨星系航行"></textarea></div></div>
+    <div class="q"><div class="q-h"><span class="q-n">G</span><span class="q-t">什么阻止两人在一起</span></div><div class="row"><input type="text" id="storyConflict" placeholder="例：战争、身份、时间循环、不同阵营或即将关闭的星门"></div></div>
+    <div class="q"><div class="q-h"><span class="q-n">H</span><span class="q-t">最紧张或最震撼的画面</span></div><div class="row"><textarea id="storyClimax" placeholder="例：城门燃起烽火，新娘在风雪中奔向负伤归来的将军"></textarea></div></div>
+    <div class="q"><div class="q-h"><span class="q-n">I</span><span class="q-t">故事最后怎么结束</span></div><div class="row"><textarea id="storyEnding" placeholder="例：两人登上飞船，在星门关闭前驶向新的星系"></textarea></div></div>
+    <div class="q"><div class="q-h"><span class="q-n">J</span><span class="q-t">结尾想说的一句话</span></div><div class="row"><input type="text" id="themeFinalLine" placeholder="例：无论隔着多少光年，我都会找到你"></div></div>
+    <div class="q"><div class="q-h"><span class="q-n">K</span><span class="q-t">必须出现的服装、建筑、武器或道具</span><span class="q-k">选填</span></div><div class="row"><textarea id="themeElements" placeholder="例：银色飞船、旧式怀表、红色披风、雪夜城楼"></textarea></div></div>
+  </section>
+
   <section id="s6">
     <div class="eyebrow"><span>加减项</span></div>
     <h2>想加的，不想要的<small>选填，建议填</small></h2>
@@ -291,8 +403,26 @@ html[lang="en"] .card-b{word-break:normal;overflow-wrap:anywhere}
       <div class="q-h"><span class="q-n">24</span><span class="q-t">注意点、参考、想法</span></div>
       <div class="q-sub">想要的画面质感、参考的电影或照片、特别在意的地方、怕出错的地方，都写。写得越具体，片子越像你们想的那样。</div>
       <div class="row"><textarea id="notes" placeholder="例：画面想要日系电影那种朦胧、精致的质感；旁白别太煽情；他不喜欢正面特写"></textarea></div>
+      <details class="example"><summary>查看填写示例</summary><p>想要克制、温柔的电影感，不要过度磨皮；结尾希望停在两个人相视而笑，不需要大段煽情文字。</p></details>
+    </div>
+    <div class="preview-box">
+      <h3>提交前预览</h3>
+      <p>这里会实时整理你们的选择和故事。确认无误后，可复制、下载或使用手机分享。</p>
+      <div class="preview-story" id="storyPreview"></div>
+      <ul class="quality-list" id="qualityList"></ul>
+      <div class="deliver-actions">
+        <button class="btn primary" id="previewCopy" type="button">复制完整需求单</button>
+        <button class="btn" id="downloadCard" type="button">下载需求单</button>
+        <button class="btn" id="shareCard" type="button">手机分享</button>
+        <button class="btn" id="printCard" type="button">打印 / 存为 PDF</button>
+      </div>
     </div>
   </section>
+  <div class="step-controls">
+    <button class="btn" id="prevStep" type="button">← 上一步</button>
+    <span class="step-status" id="stepStatus">第 1 / 5 步</span>
+    <button class="btn primary" id="nextStep" type="button">下一步 →</button>
+  </div>
 </main>
 
 <aside>
@@ -313,19 +443,25 @@ html[lang="en"] .card-b{word-break:normal;overflow-wrap:anywhere}
   </div>
 </aside>
 </div>
+<div class="mobile-cta"><span>答案会自动暂存</span><button id="mobileCopy" type="button">复制故事卡</button></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 (function(){
 const SPEC = {
+  creationModes:[
+    {code:'real',name:'真实故事改编',desc:'根据相识、相知、相伴和婚礼经历，讲述属于你们的真实故事'},
+    {code:'theme',name:'主题角色演绎',desc:'不使用真实恋爱经历，以两人为主角创作古风、科幻、玄幻等全新故事'},
+    {code:'hybrid',name:'真实经历＋主题包装',desc:'保留真实情感和关键经历，再放进古风、科幻或其他世界中重新讲述',featured:true}
+  ],
   ratio:[['宽屏 16:9（默认，现场大屏）','宽屏 16:9'],['窄屏 9:16（手机竖屏）','窄屏 9:16']],
   occasion:['仪式前暖场','仪式中','宴会开场'],
   duration:[['90 秒（默认）','90 秒'],['180 秒','180 秒']],
   tiers:[
-    {code:'A',name:'精品史诗微电影',desc:'电影级光影，多场景切换、慢动作 + 粒子特效、复杂运镜；免费 4 次片段调整',featured:true},
-    {code:'B',name:'精品级微电影',desc:'人像稳定，连贯长镜头，常规电影氛围感；免费 3 次镜头调整'},
-    {code:'C',name:'标准版',desc:'常规运镜，少量特效；免费 3 次镜头调整'},
-    {code:'D',name:'轻成片',desc:'简约镜头，基础场景；免费 2 次镜头调整'}
+    {code:'A',name:'精品史诗微电影',desc:'电影级光影，多场景切换、慢动作 + 粒子特效、复杂运镜',fit:'重视仪式感与视觉冲击',adjust:'4 次片段调整',featured:true},
+    {code:'B',name:'精品级微电影',desc:'人像稳定，连贯长镜头，常规电影氛围感',fit:'重视人物与故事连贯',adjust:'3 次镜头调整'},
+    {code:'C',name:'标准版',desc:'常规运镜，少量特效，完整讲述核心故事',fit:'希望完整耐看的婚礼影片',adjust:'3 次镜头调整'},
+    {code:'D',name:'轻成片',desc:'简约镜头，基础场景，突出重要情节',fit:'预算有限或快速纪念',adjust:'2 次镜头调整'}
   ],
   style:[['写实电影感','写实电影感'],['水彩绘本','水彩绘本'],['纸艺折纸','纸艺折纸'],['黏土定格','黏土定格'],['可爱 3D 动画','可爱 3D 动画']],
   styleMode:[['真人出镜，环境和画风是动画','真人出镜+动画环境'],['纯动画，两人也画成动画形象','纯动画'],['写实真人，不是动画','写实真人']],
@@ -580,12 +716,14 @@ function chips(host, name, opts, otherPh){
   html += `<span class="chip other"><input type="radio" name="${name}" id="${name}_x" value="其他"><label for="${name}_x">其他</label><input type="text" id="${name}_other" placeholder="${esc(otherPh||'自己写一个')}" aria-label="其他，请填写"></span>`;
   h.innerHTML = html;
 }
+$('#creationMode').innerHTML = SPEC.creationModes.map(t=>`<span class="tier"><input type="radio" name="creationMode" id="mode_${t.code}" value="${t.code}"><label for="mode_${t.code}"><span class="tier-top"><span class="tier-code">${t.code==='real'?'A':t.code==='theme'?'B':'C'}</span><span class="tier-name">${esc(t.name)}</span>${t.featured?`<span class="tier-badge">推荐</span>`:''}</span><p class="tier-desc">${esc(t.desc)}</p></label></span>`).join('');
 chips('#ratio','ratio',SPEC.ratio,'例：1:1 方形');
 chips('#occasion','occasion',SPEC.occasion,'例：敬酒环节');
 chips('#duration','duration',SPEC.duration,'例：120 秒');
-$('#tiers').innerHTML = SPEC.tiers.map(t=>`<span class="tier"><input type="radio" name="tier" id="tier_${t.code}" value="${t.code}"><label for="tier_${t.code}"><span class="tier-top"><span class="tier-code">${t.code}</span><span class="tier-name">${esc(tr(t.name))}</span>${t.featured?`<span class="tier-badge">${tr('主推')}</span>`:''}</span><p class="tier-desc">${esc(tr(t.desc))}</p></label></span>`).join('');
+$('#tiers').innerHTML = SPEC.tiers.map(t=>`<span class="tier"><input type="radio" name="tier" id="tier_${t.code}" value="${t.code}"><label for="tier_${t.code}"><span class="tier-top"><span class="tier-code">${t.code}</span><span class="tier-name">${esc(tr(t.name))}</span>${t.featured?`<span class="tier-badge">${tr('主推')}</span>`:''}</span><p class="tier-desc">${esc(tr(t.desc))}</p><span class="tier-meta"><span>适合：${esc(t.fit)}</span><span>含 ${esc(t.adjust)}</span></span></label></span>`).join('');
 chips('#style','style',SPEC.style,'例：岩井俊二《花与爱丽丝》那种质感');
 chips('#styleMode','styleMode',SPEC.styleMode,'自己写');
+chips('#conceptGenre','conceptGenre',['古风江湖','仙侠玄幻','民国爱情','科幻未来','末日重逢','西式魔幻','童话绘本','动漫世界','悬疑电影'],'例：东方蒸汽朋克');
 $('#music').innerHTML = `<span class="chip other"><input type="radio" name="music" id="music_own" value="自带"><label for="music_own">我有想用的纯音乐</label><input type="text" id="music_own_t" placeholder="曲名 / 作者 / 链接，不带歌词" aria-label="曲名"></span><span class="chip"><input type="radio" name="music" id="music_us" value="制作方定制"><label for="music_us">交给制作方定制</label></span>`;
 
 $('#acts').innerHTML = SPEC.acts.map(a=>`
@@ -605,6 +743,7 @@ $('#acts').innerHTML = SPEC.acts.map(a=>`
     <div class="q-h"><span class="q-n">${a.fill.q}</span><span class="q-t">填一个</span></div>
     <div class="q-sub">${esc(a.fill.ask)}</div>
     <div class="row"><input type="text" id="${a.id}_fill" placeholder="${esc(a.fill.ph)}"></div>
+    <details class="example"><summary>不知道怎么写？查看示例</summary><p>${esc(a.fill.ph.replace(/^例：/,''))}。尽量写清楚时间、地点、动作和一个能记住的小细节。</p></details>
   </div>
   ${a.extra?`<div class="q">
     <div class="q-h"><span class="q-n">${a.extra.q}</span><span class="q-t">加一个</span><span class="q-k">选填</span></div>
@@ -620,22 +759,24 @@ $('#actChips').innerHTML = SPEC.acts.map(a=>`<span class="act" id="ac_${a.id}">$
 const v = id => { const el = document.getElementById(id); return el ? (el.type==='checkbox' ? el.checked : el.value.trim()) : ''; };
 const radio = name => { const r = document.querySelector(`input[name="${name}"]:checked`); return r ? r.value : ''; };
 function pick(name){ const r = radio(name); if(r==='其他'){ const t = v(name+'_other'); return t ? tr('其他')+': '+t : ''; } return tr(r); }
-function tierPick(){ const code=radio('tier'); if(!code)return ''; const t=SPEC.tiers.find(x=>x.code===code); return t ? code+' · '+tr(t.name)+' ｜ '+tr(t.desc) : ''; }
+function tierPick(){ const code=radio('tier'); if(!code)return ''; const t=SPEC.tiers.find(x=>x.code===code); return t ? code+' · '+tr(t.name)+' ｜ '+tr(t.desc)+' ｜ 适合：'+t.fit+' ｜ 含 '+t.adjust : ''; }
+function modePick(){ const code=radio('creationMode'); const m=SPEC.creationModes.find(x=>x.code===code); return m?m.name:''; }
 const needMode = () => { const r = radio('style'); return !!r && r!=='写实电影感'; };
 
 function build(){
   $('#styleSub').hidden=!needMode();
+  const mode=radio('creationMode')||'real';
   const U='<span class="u">'+tr('未填')+'</span>', need=[],html=[],text=[];
   const L=(h,t)=>{html.push(h);text.push(t);};
   const cell=(val,label)=>{if(val)return [esc(val),val];need.push(tr(label));return [U,tr('未填')];};
-  const rows=[['称呼',v('groom')&&v('bride')?v('groom')+' / '+v('bride'):''],['尺寸',pick('ratio')],['场合',pick('occasion')],['时长',pick('duration')],['制作档位',tierPick()]];
+  const rows=[['创作方向',modePick()],['称呼',v('groom')&&v('bride')?v('groom')+' / '+v('bride'):''],['婚礼日期',v('weddingDate')],['联系方式',v('contactWay')],['尺寸',pick('ratio')],['场合',pick('occasion')],['时长',pick('duration')],['制作档位',tierPick()]];
   let sty=pick('style');
   if(sty&&needMode()){const mode=pick('styleMode');if(!mode)need.push(tr('画风里两人怎么出现'));sty+=' · '+(mode||tr('未填'));}
   rows.push(['画风',sty]);
-  const parts=rows.map(([label,value])=>{const [h,t]=cell(value,label);return [tr(label)+'：'+h,tr(label)+'：'+t];});
+  const parts=rows.map(([label,value])=>{const optional=label==='婚礼日期'||label==='联系方式';const [h,t]=optional?(value?[esc(value),value]:['<span class="m">未提供</span>','未提供']):cell(value,label);return [tr(label)+'：'+h,tr(label)+'：'+t];});
   L(parts.map(x=>x[0]).join('　　'),parts.map(x=>x[1]).join('　　'));
   L(tr('照片：原图通过聊天另发，不包含在复制文字中'),tr('照片：原图通过聊天另发，不包含在复制文字中'));
-  SPEC.acts.forEach(a=>{
+  if(mode!=='theme')SPEC.acts.forEach(a=>{
     const p=pick(a.id+'_pick'),f=v(a.id+'_fill');
     const prefix=tr(a.n)+(LANG==='en'?' ':'');
     const [pH,pT]=cell(p,prefix+tr(a.venue?'结尾动作':'场景'));
@@ -645,6 +786,16 @@ function build(){
     else{h+=pH+' ｜ '+fH;t+=pT+' ｜ '+fT;if(a.extra){const x=v(a.id+'_extra');h+=' ｜ '+tr('加')+'：'+(x?esc(x):'<span class="m">—</span>');t+=' ｜ '+tr('加')+'：'+(x||'—');}}
     document.getElementById('ac_'+a.id).classList.toggle('on',!!p&&!!f&&(!a.venue||!!pick(a.id+'_venue')));L(h,t);
   });
+  else SPEC.acts.forEach(a=>document.getElementById('ac_'+a.id).classList.remove('on'));
+  if(mode!=='real'){
+    const conceptRows=[
+      ['主题题材',pick('conceptGenre')],['世界设定',v('worldSetting')],['新郎角色',v('groomRole')],['新娘角色',v('brideRole')],['人物关系',v('storyRelation')],
+      ['核心事件',v('mainEvent')],['故事阻力',v('storyConflict')],['高潮画面',v('storyClimax')],['故事结局',v('storyEnding')],['结尾台词',v('themeFinalLine')]
+    ];
+    if(mode==='hybrid')conceptRows.splice(5,0,['保留的真实经历',v('realKeep')]);
+    const conceptParts=conceptRows.map(([label,value])=>{const [h,t]=cell(value,label);return [label+'：'+h,label+'：'+t];});
+    L('【主题世界与剧情】\n'+conceptParts.map(x=>x[0]).join('\n')+(v('themeElements')?'\n关键视觉元素：'+esc(v('themeElements')):''),'【主题世界与剧情】\n'+conceptParts.map(x=>x[1]).join('\n')+(v('themeElements')?'\n关键视觉元素：'+v('themeElements'):''));
+  }
   const adds=SPEC.adds.filter(([k])=>v('add_'+k)||v('add_'+k+'_t')).map(([k,label])=>{const value=v('add_'+k+'_t');return tr(label.replace('，名字',''))+(value?'「'+value+'」':'');}).join(comma);
   const extras=[['加项',adds],['禁忌',v('avoid')],['换幕',v('swap')]];
   L(extras.map(([label,value])=>tr(label)+'：'+(value?esc(value):'<span class="m">—</span>')).join('　　'),extras.map(([label,value])=>tr(label)+'：'+(value||'—')).join('　　'));
@@ -654,7 +805,14 @@ function build(){
   L('<span class="m">'+tr('旁白：第三人称讲述（固定）')+'</span>',tr('旁白：第三人称讲述（固定）'));
   L(tr('未填')+'：'+(need.length?'<span class="u">'+esc(need.join(comma))+'</span>':tr('无，可以复制')),tr('未填')+'：'+(need.length?need.join(comma):tr('无，可以复制')));
   $('#cardBody').innerHTML=html.join('\n');build.text=text.join('\n');build.need=need;
-  const total=18+(needMode()?1:0),n=Math.max(0,total-need.length);
+  $('#storyPreview').textContent=text.join('\n\n');
+  const detailLength=mode==='theme'?[v('worldSetting'),v('mainEvent'),v('storyConflict'),v('storyClimax'),v('storyEnding')].join('').length:SPEC.acts.reduce((n,a)=>n+v(a.id+'_fill').length+(a.extra?v(a.id+'_extra').length:0),0)+(mode==='hybrid'?[v('worldSetting'),v('mainEvent'),v('storyEnding')].join('').length:0);
+  const checks=[];
+  checks.push(need.length?['warn','还有 '+need.length+' 项必答内容未完成']:['ok','必答内容已完整']);
+  checks.push(detailLength<80?['warn','故事细节偏少，建议再补充地点、动作或一句话']:['ok','故事细节足够用于创作脚本']);
+  checks.push(v('avoid')?['ok','已记录不希望出现的内容']:['warn','建议填写不希望出现的内容，避免成片踩雷']);
+  $('#qualityList').innerHTML=checks.map(([type,msg])=>`<li class="${type}"><b>${type==='ok'?'✓':'!'}</b><span>${esc(msg)}</span></li>`).join('');
+  const total=(mode==='theme'?17:mode==='hybrid'?29:18)+(needMode()?1:0),n=Math.max(0,total-need.length);
   $('#fill').style.width=(n/total*100)+'%';$('#progt').textContent=tr('必答')+' '+n+' / '+total+(need.length===0?' · '+tr('可以复制'):'');
   $('#prog').classList.toggle('done',need.length===0);
 }
@@ -664,7 +822,7 @@ const KEY='wedding-intake-copy-v1';
 function fields(){ const o={}; document.querySelectorAll('main input,main textarea').forEach(el=>{ if(!el.id) return; o[el.id]= (el.type==='checkbox'||el.type==='radio') ? el.checked : el.value; }); return o; }
 function save(){ try{ localStorage.setItem(KEY,JSON.stringify(fields())); }catch(e){ $('#submitTip').textContent=tr('当前浏览器不能保存草稿，请填好后及时复制，照片原图另发。'); } }
 function load(){ try{ const o=JSON.parse(localStorage.getItem(KEY)||'null'); if(!o)return false; Object.keys(o).forEach(id=>{ const el=document.getElementById(id);if(!el)return;if(el.type==='checkbox'||el.type==='radio')el.checked=!!o[id];else el.value=o[id]; });return true; }catch(e){return false;} }
-function reset(){ document.querySelectorAll('input,textarea').forEach(el=>{if(el.type==='checkbox'||el.type==='radio')el.checked=false;else el.value='';});setRadio('ratio','宽屏 16:9');setRadio('duration','90 秒');$('#copyFallback').hidden=true; }
+function reset(){ document.querySelectorAll('input,textarea').forEach(el=>{if(el.type==='checkbox'||el.type==='radio')el.checked=false;else el.value='';});setRadio('creationMode','real');setRadio('ratio','宽屏 16:9');setRadio('duration','90 秒');$('#copyFallback').hidden=true; }
 function setRadio(name,val){ const r=document.querySelector(`input[name="${name}"][value="${val}"]`); if(r) r.checked=true; }
 let tt; function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('show'),2400); }
 async function copyCard(){
@@ -674,15 +832,56 @@ async function copyCard(){
   try{ await navigator.clipboard.writeText(t);toast(tr('已复制，把故事卡和原图通过微信发回制作方')); }
   catch(e){ const el=$('#copyFallback');el.value=t;el.hidden=false;el.focus();el.select();el.setSelectionRange(0,t.length);toast(tr('请长按文字全选复制，电脑也可按 Ctrl / ⌘ + C')); }
 }
+let currentStep=1;
+function setStep(step,scroll=true){
+  currentStep=Math.max(1,Math.min(5,Number(step)||1));
+  const mode=radio('creationMode')||'real';
+  const groups=mode==='theme'?{1:['s0'],2:['conceptWorld'],3:['conceptPlot'],4:['s6','s7'],5:['s8']}:
+    mode==='hybrid'?{1:['s0'],2:['a1','a2','conceptWorld'],3:['a3','a4','a5','conceptPlot'],4:['s6','s7'],5:['s8']}:
+    {1:['s0'],2:['a1','a2'],3:['a3','a4','a5'],4:['s6','s7'],5:['s8']};
+  document.querySelectorAll('main section').forEach(el=>{el.classList.add('step-panel');el.hidden=!groups[currentStep].includes(el.id);});
+  $('#realKeepWrap').hidden=mode!=='hybrid';
+  const navLabels=mode==='real'?['基本设定','相识相知','相伴承诺','专属偏好','预览提交']:mode==='theme'?['基本设定','世界角色','剧情结局','专属偏好','预览提交']:['基本设定','真实原型＋世界','经历＋剧情','专属偏好','预览提交'];
+  document.querySelectorAll('.stage-nav a span').forEach((el,i)=>el.textContent=navLabels[i]);
+  document.querySelector('.intro').hidden=currentStep!==1;
+  document.querySelectorAll('.stage-nav a').forEach(a=>a.classList.toggle('active',Number(a.dataset.step)===currentStep));
+  $('#prevStep').disabled=currentStep===1;
+  $('#nextStep').hidden=currentStep===5;
+  $('#nextStep').textContent=currentStep===4?'查看预览 →':'下一步 →';
+  $('#stepStatus').textContent='第 '+currentStep+' / 5 步';
+  try{localStorage.setItem('wedding-card-step',String(currentStep));}catch(e){}
+  build();
+  if(scroll)document.querySelector('.stage-nav').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function downloadCard(){
+  build();if(build.need.length){toast('请先完成必答内容，再生成需求单');return;}
+  const blob=new Blob([build.text],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=(v('groom')||'新人')+'-'+(v('bride')||'婚礼')+'-微电影需求单.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('需求单已下载');
+}
+async function shareCard(){
+  build();if(build.need.length){toast('请先完成必答内容，再分享需求单');return;}
+  if(navigator.share){try{await navigator.share({title:'婚礼微电影创作需求单',text:build.text});return}catch(e){if(e.name==='AbortError')return;}}
+  await copyCard();
+}
 document.addEventListener('input', e=>{if(e.target.id==='copyFallback')return;$('#copyFallback').hidden=true;build();save();});
-document.addEventListener('change', ()=>{build();save();});
+document.addEventListener('change', e=>{build();save();if(e.target.name==='creationMode')setStep(currentStep,false);});
 $('#btnCopy').addEventListener('click',copyCard);
+$('#mobileCopy').addEventListener('click',copyCard);
+$('#previewCopy').addEventListener('click',copyCard);
+$('#downloadCard').addEventListener('click',downloadCard);
+$('#shareCard').addEventListener('click',shareCard);
+$('#printCard').addEventListener('click',()=>{build();if(build.need.length){toast('请先完成必答内容，再保存 PDF');return;}window.print();});
+$('#prevStep').addEventListener('click',()=>setStep(currentStep-1));
+$('#nextStep').addEventListener('click',()=>setStep(currentStep+1));
+document.querySelectorAll('.stage-nav a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();setStep(a.dataset.step);}));
 $('#btnClear').addEventListener('click',()=>{if(!confirm(tr('清空本机这份填写草稿？')))return;reset();try{localStorage.removeItem(KEY);}catch(e){}build();toast(tr('已清空'));});
 translateStatic();
 if(!load())reset();
+if(!radio('creationMode'))setRadio('creationMode','real');
 build();
+let savedStep=1;try{savedStep=Number(localStorage.getItem('wedding-card-step'))||1}catch(e){}
+setStep(savedStep,false);
 })();
 </script>
 </body>
 </html>
-
