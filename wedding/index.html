@@ -208,6 +208,24 @@ body.cinema-bg.wedding-scene-5:before{background-image:linear-gradient(110deg,rg
 body.bg-off:before{opacity:0}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]) body.cinema-bg:before{background-image:linear-gradient(110deg,rgba(21,24,31,.97),rgba(21,24,31,.87) 62%,rgba(4,7,12,.4)),url('wedding-ceremony.png')}:root:not([data-theme="light"]) body.cinema-bg.wedding-scene-3:before,:root:not([data-theme="light"]) body.cinema-bg.wedding-scene-4:before{background-image:linear-gradient(110deg,rgba(21,24,31,.97),rgba(21,24,31,.88) 62%,rgba(4,7,12,.4)),url('wedding-hall.png')}}
 </style>
+
+<style id="themeStyles">
+.theme-switch{display:flex;align-items:center;gap:4px;padding:3px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.theme-switch button{border:0;border-radius:7px;background:transparent;color:var(--ink-2);padding:5px 9px;cursor:pointer;font-size:12px;white-space:nowrap}
+.theme-switch button.active{background:var(--ink);color:var(--paper);box-shadow:0 2px 8px rgba(20,25,35,.18)}
+body.theme-white:before,body.theme-dark:before{opacity:0!important}body.theme-white,body.theme-dark{background:var(--paper)}
+body.theme-white .wrap>main,body.theme-dark .wrap>main{background:transparent}.theme-white .bar,.theme-dark .bar{background:var(--paper)}
+body.theme-ambient{background:transparent}body.theme-ambient:before{opacity:1!important;filter:saturate(1.08) contrast(1.02)}
+body.theme-ambient.cinema-bg:before{background-image:linear-gradient(110deg,rgba(246,242,236,.34),rgba(246,242,236,.14) 58%,rgba(14,22,34,.2)),url('wedding-ceremony.png')}
+body.theme-ambient.cinema-bg.wedding-scene-3:before,body.theme-ambient.cinema-bg.wedding-scene-4:before{background-image:linear-gradient(110deg,rgba(246,242,236,.34),rgba(246,242,236,.15) 58%,rgba(14,22,34,.2)),url('wedding-hall.png')}
+body.theme-ambient.cinema-bg.wedding-scene-5:before{background-image:linear-gradient(110deg,rgba(246,242,236,.32),rgba(246,242,236,.12) 58%,rgba(14,22,34,.2)),url('../wedding-cinema-hero.png')}
+body.theme-ambient .bar{background:rgba(246,243,238,.7);border-color:rgba(255,255,255,.58);backdrop-filter:blur(18px)}
+body.theme-ambient .wrap>main{padding:28px;border:1px solid rgba(255,255,255,.64);border-radius:20px;background:rgba(255,255,255,.76);box-shadow:0 24px 64px rgba(24,31,43,.2);backdrop-filter:blur(18px) saturate(1.12)}
+body.theme-ambient .card,body.theme-ambient .intro,body.theme-ambient .preview-box{background:rgba(255,255,255,.76);border-color:rgba(255,255,255,.68);backdrop-filter:blur(18px) saturate(1.12)}
+body.theme-ambient .stage-nav a,body.theme-ambient .tier label,body.theme-ambient .chip label,body.theme-ambient input[type=text],body.theme-ambient input[type=date],body.theme-ambient textarea,body.theme-ambient .drop{background:rgba(255,255,255,.86)}
+body.theme-ambient .hero-shell{box-shadow:0 28px 76px rgba(14,20,31,.34)}
+@media(max-width:760px){.theme-switch{order:4;width:100%;justify-content:center}.theme-switch button{flex:1}.bar-in{gap:8px}body.theme-ambient .wrap>main{padding:20px 16px;border-radius:16px}}
+</style>
 </head>
 <body class="gate-locked cinema-bg wedding-scene-1">
 
@@ -253,8 +271,9 @@ body.bg-off:before{opacity:0}
 <div class="bar"><div class="bar-in">
   <h1>婚礼微电影创作卡</h1>
   <span class="sp"></span>
+  <a class="btn" href="../">返回选择</a>
   <a class="btn" id="langToggle" href="?lang=en" aria-label="Switch language">English</a>
-  <button class="btn" id="bgToggle" type="button">关闭背景</button>
+  <div class="theme-switch" id="themeSwitch" aria-label="页面风格"><button type="button" data-mode="white">简洁白</button><button type="button" data-mode="dark">电影黑</button><button type="button" data-mode="ambient">氛围背景</button></div>
   <span class="prog" id="prog"><span class="track"><span class="fill" id="fill"></span></span><span id="progt">必答 0 / 18</span></span>
   <button class="btn" id="btnClear" type="button">清空</button>
 </div></div>
@@ -844,9 +863,11 @@ let currentStep=1;
 function applyWeddingBackground(){
   document.body.classList.remove('wedding-scene-1','wedding-scene-2','wedding-scene-3','wedding-scene-4','wedding-scene-5');
   document.body.classList.add('wedding-scene-'+currentStep);
-  const off=localStorage.getItem('wedding-bg')==='off';
-  document.body.classList.toggle('bg-off',off);
-  $('#bgToggle').textContent=off?'开启背景':'关闭背景';
+  const mode=localStorage.getItem('wedding-theme')||'ambient';
+  document.body.classList.remove('theme-white','theme-dark','theme-ambient','bg-off');
+  document.body.classList.add('theme-'+mode);
+  document.documentElement.dataset.theme=mode==='dark'?'dark':'light';
+  document.querySelectorAll('#themeSwitch button').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
 }
 function setStep(step,scroll=true){
   currentStep=Math.max(1,Math.min(5,Number(step)||1));
@@ -890,7 +911,7 @@ $('#printCard').addEventListener('click',()=>{build();if(build.need.length){toas
 $('#prevStep').addEventListener('click',()=>setStep(currentStep-1));
 $('#nextStep').addEventListener('click',()=>setStep(currentStep+1));
 document.querySelectorAll('.stage-nav a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();setStep(a.dataset.step);}));
-$('#bgToggle').addEventListener('click',()=>{const off=localStorage.getItem('wedding-bg')!=='off';localStorage.setItem('wedding-bg',off?'off':'on');applyWeddingBackground();});
+$('#themeSwitch').addEventListener('click',e=>{const b=e.target.closest('button[data-mode]');if(!b)return;localStorage.setItem('wedding-theme',b.dataset.mode);applyWeddingBackground();});
 $('#btnClear').addEventListener('click',()=>{if(!confirm(tr('清空本机这份填写草稿？')))return;reset();try{localStorage.removeItem(KEY);}catch(e){}build();toast(tr('已清空'));});
 translateStatic();
 if(!load())reset();
